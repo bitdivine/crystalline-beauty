@@ -1,0 +1,58 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Replace snowfall canvas animation with hail background",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Replace the snowfall canvas effect with a hail effect (pellets/streaks) featuring faster fall speed and subtle wind drift.",
+      "acceptanceCriteria": [
+        "The background animation shows hailstones (pellets/streaks) rather than six-armed snowflakes.",
+        "Hailstones fall noticeably faster than the prior snowflake animation and include slight horizontal drift."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HailBackground.tsx",
+          "operation": "create",
+          "description": "Create a new canvas-based HailBackground component that renders visually distinct hailstones (small bright pellets and/or short streaks), with faster downward velocity than the prior snow effect and subtle horizontal wind drift."
+        },
+        {
+          "path": "frontend/src/components/SnowfallBackground.tsx",
+          "operation": "delete",
+          "description": "Remove the old SnowfallBackground component so the snowfall effect is fully replaced by hail."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Preserve performance and accessibility behavior for the background animation (DPR scaling, resize reinit, density caps, prefers-reduced-motion non-animating).",
+      "acceptanceCriteria": [
+        "On resize, the canvas resizes correctly and the hail field reinitializes without distortion.",
+        "When the OS setting prefers-reduced-motion is enabled, the background does not continuously animate (renders a static frame or equivalent low-motion behavior).",
+        "Hail particle count remains capped to prevent excessive load on very large viewports."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HailBackground.tsx",
+          "operation": "modify",
+          "description": "Implement the same performance/accessibility safeguards as the prior background: device-pixel-ratio-aware canvas sizing (avoid cumulative scaling by resetting the transform on resize), density-based particle counts with min/max caps, proper resize handling that reinitializes hail without distortion, and prefers-reduced-motion support that renders a static frame (no continuous requestAnimationFrame loop) when enabled."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Wire the hail background into the main layout behind existing content without affecting interactions (canvas pointer-events disabled).",
+      "acceptanceCriteria": [
+        "The hail background is visible behind the page content and does not block clicks/scrolling.",
+        "No other sections (Header/Hero/Gallery/Footer) lose layout or readability due to the background change."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update the main layout to render HailBackground behind the existing Header/Hero/Gallery/Footer content, preserving the current layering (background at lower z-index) and ensuring the canvas keeps pointer-events disabled so it does not block clicks/scrolling."
+        }
+      ]
+    }
+  ]
+}

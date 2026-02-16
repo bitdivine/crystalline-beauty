@@ -1,0 +1,60 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-replace-the-existing-canvas-based-snowfall-effect-with-a-hail-effect-render-falling-hailstones-ice-pellets-instead-of-snowflakes-with-a-visually-distinct-hail-look-e-g-small-bright-pellets-and-or-short-streaks-faster-downward-motion-than-snow-and-subtle-horizontal-wind-drift",
+      "featureTitle": "Replace the existing canvas-based snowfall effect with a hail effect: render falling hailstones (ice pellets) instead of snowflakes, with a visually distinct hail look (e.g., small bright pellets and/or short streaks), faster downward motion than snow, and subtle horizontal wind drift.",
+      "files": [
+        "frontend/src/components/HailBackground.tsx",
+        "frontend/src/components/SnowfallBackground.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-preserve-existing-performance-and-accessibility-behavior-in-the-background-animation-keep-density-caps-device-pixel-ratio-scaling-resize-handling-and-prefers-reduced-motion-support-reduced-motion-must-not-continuously-animate",
+      "featureTitle": "Preserve existing performance and accessibility behavior in the background animation: keep density caps, device-pixel-ratio scaling, resize handling, and prefers-reduced-motion support (reduced motion must not continuously animate).",
+      "files": [
+        "frontend/src/components/HailBackground.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-app-to-use-the-hail-background-component-in-the-main-layout-so-the-hail-effect-renders-behind-the-existing-header-hero-gallery-footer-content-without-affecting-interactions-pointer-events-must-remain-disabled-for-the-canvas",
+      "featureTitle": "Update the app to use the hail background component in the main layout so the hail effect renders behind the existing header/hero/gallery/footer content without affecting interactions (pointer-events must remain disabled for the canvas).",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

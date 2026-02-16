@@ -1,0 +1,73 @@
+{
+  "kind": "build_request",
+  "title": "Replace snowfall canvas animation with hail",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Replace the existing canvas-based snowfall effect with a hail effect: render falling hailstones (ice pellets) instead of snowflakes, with a visually distinct hail look (e.g., small bright pellets and/or short streaks), faster downward motion than snow, and subtle horizontal wind drift.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Hmm.  Can you do hail instead?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The background animation shows hailstones (pellets/streaks) rather than six-armed snowflakes.",
+        "Hailstones fall noticeably faster than the prior snowflake animation and include slight horizontal drift."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Preserve existing performance and accessibility behavior in the background animation: keep density caps, device-pixel-ratio scaling, resize handling, and prefers-reduced-motion support (reduced motion must not continuously animate).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Can you do hail instead?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On resize, the canvas resizes correctly and the hail field reinitializes without distortion.",
+        "When the OS setting prefers-reduced-motion is enabled, the background does not continuously animate (renders a static frame or equivalent low-motion behavior).",
+        "Hail particle count remains capped to prevent excessive load on very large viewports."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Update the app to use the hail background component in the main layout so the hail effect renders behind the existing header/hero/gallery/footer content without affecting interactions (pointer-events must remain disabled for the canvas).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Can you do hail instead?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The hail background is visible behind the page content and does not block clicks/scrolling.",
+        "No other sections (Header/Hero/Gallery/Footer) lose layout or readability due to the background change."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/components/ui (compose them only).",
+    "Do not modify any files listed in SYSTEM_CONTEXT.frontend.immutablePaths.",
+    "Keep the backend as-is; do not introduce new backend methods or state for this change."
+  ],
+  "nonGoals": [
+    "Adding new authentication flows or identity features.",
+    "Changing the gallery content, modal behavior, or site copy outside of what is necessary to swap the background effect.",
+    "Implementing real-time or network-synced weather effects."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

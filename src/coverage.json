@@ -1,0 +1,63 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-04T14:31:34.426Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Replace the existing canvas-based snowfall effect with a hail effect: render falling hailstones (ice pellets) instead of snowflakes, with a visually distinct hail look (e.g., small bright pellets and/or short streaks), faster downward motion than snow, and subtle horizontal wind drift.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/HailBackground.tsx",
+          "frontend/src/components/SnowfallBackground.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/HailBackground.tsx",
+          "frontend/src/components/SnowfallBackground.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Preserve existing performance and accessibility behavior in the background animation: keep density caps, device-pixel-ratio scaling, resize handling, and prefers-reduced-motion support (reduced motion must not continuously animate).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/HailBackground.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/HailBackground.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Update the app to use the hail background component in the main layout so the hail effect renders behind the existing header/hero/gallery/footer content without affecting interactions (pointer-events must remain disabled for the canvas).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/HailBackground.tsx",
+    "frontend/src/components/SnowfallBackground.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

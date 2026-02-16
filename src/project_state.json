@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 23,
+  "summary": "Crystalline Beauty now includes expanded core infrastructure and a reusable ICP React build template alongside the existing winter-themed landing page frontend, adding deployment/config scaffolding, a bundled shadcn/ui component library in the template, and supporting scripts/lint rules for building and maintaining the project.",
+  "existing_features": [
+    {
+      "id": "IF-1",
+      "title": "Single-page snowflake-themed landing layout",
+      "synonyms": [
+        "SPA layout",
+        "Page composition"
+      ],
+      "description": "Renders a single-page experience composed of a header, hero section, gallery, and footer, with the snowfall background layered behind all content.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-2",
+      "title": "Animated header branding",
+      "synonyms": [
+        "Header",
+        "Site title banner"
+      ],
+      "description": "Displays the site title “Crystalline Beauty” centered with Lucide snowflake icons on both sides using slow spin animations and winter-themed styling.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-3",
+      "title": "Hero section with editorial snowflake copy",
+      "synonyms": [
+        "Intro section",
+        "Hero copy"
+      ],
+      "description": "Presents large serif typography and prose-style paragraphs describing snowflakes, including a decorative horizontal gradient rule for visual separation.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-4",
+      "title": "Responsive snowflake image gallery",
+      "synonyms": [
+        "Gallery grid",
+        "Image grid"
+      ],
+      "description": "Shows six locally-referenced snowflake images in a responsive grid (1/2/3 columns by breakpoint) with hover scale, overlay gradient, and card styling.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-5",
+      "title": "Modal dialog image viewer per gallery item",
+      "synonyms": [
+        "Lightbox",
+        "Dialog viewer"
+      ],
+      "description": "Each gallery tile opens a dialog showing a larger image and its title/description via Dialog, DialogTrigger, and DialogContent components.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-6",
+      "title": "Canvas-based animated snowfall background",
+      "synonyms": [
+        "Snowfall effect",
+        "Background animation"
+      ],
+      "description": "Draws and animates softly glowing snow particles on a fixed, full-viewport canvas using requestAnimationFrame, with responsive recreation of particles on window resize.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-7",
+      "title": "Winter OKLCH theme tokens with Tailwind integration",
+      "synonyms": [
+        "Design system tokens",
+        "Theme variables"
+      ],
+      "description": "Defines OKLCH color variables for light/dark modes and a winter-themed palette (glass, border, accent, overlay, section, card, dialog) and exposes them through Tailwind’s extended color config; includes custom shadow utilities for the winter aesthetic.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-8",
+      "title": "Footer with attribution and quote",
+      "synonyms": [
+        "Site footer"
+      ],
+      "description": "Renders a footer containing copyright text, a pulsing heart icon, an external link attribution to caffeine.ai, and an italic quote.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-9",
+      "title": "Internet Identity authentication provider (ICP)",
+      "synonyms": [
+        "II auth context",
+        "AuthClient integration"
+      ],
+      "description": "Provides a React context that initializes DFINITY AuthClient, loads persisted identity if authenticated, and exposes login/clear methods plus login status flags and error handling.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-10",
+      "title": "Backend actor creation hook with React Query caching",
+      "synonyms": [
+        "ICP actor hook",
+        "useActor"
+      ],
+      "description": "Creates an anonymous or authenticated ICP actor depending on the current Internet Identity, caches it via TanStack Query keyed by principal, and invalidates/refetches other queries when the actor instance changes.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-11",
+      "title": "React Query and auth provider app bootstrap",
+      "synonyms": [
+        "App providers",
+        "main.tsx bootstrap"
+      ],
+      "description": "Bootstraps the app by mounting into #root and wrapping the component tree with QueryClientProvider and InternetIdentityProvider.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-12",
+      "title": "ICP React build template and deployment scaffolding",
+      "synonyms": [
+        "Build template",
+        "Deploy tooling",
+        "ICP project scaffold"
+      ],
+      "description": "Adds a reusable build-template workspace with Dockerfile, ICP configuration (icp.yaml/canister.yaml), deploy script, and associated package/workspace configuration to standardize building and deploying the app on ICP.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-13",
+      "title": "Asset maintenance scripts for gallery images",
+      "synonyms": [
+        "Image tooling",
+        "Asset pipeline"
+      ],
+      "description": "Includes Node scripts to resize images and prune unused images to help keep the frontend image set optimized and consistent.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-14",
+      "title": "Template-bundled shadcn/ui component set and frontend lint rules",
+      "synonyms": [
+        "UI kit scaffold",
+        "shadcn/ui template",
+        "ESLint guardrails"
+      ],
+      "description": "Provides a broad shadcn/ui component set inside the build template plus custom ESLint rules (e.g., preventing BigInt in React Query keys and requiring the InternetIdentityProvider) to enforce consistent frontend patterns.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-15",
+      "title": "Motoko backend canister core API scaffold",
+      "synonyms": [
+        "Backend core",
+        "Motoko canister implementation"
+      ],
+      "description": "Backend canister implementation is no longer an empty placeholder actor; it now includes a concrete Motoko core scaffold intended to support real backend functionality.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-16",
+      "title": "Frontend core infrastructure utilities for persistence and query organization",
+      "synonyms": [
+        "StorageClient",
+        "useQueries helpers",
+        "Core frontend infra"
+      ],
+      "description": "Introduces shared frontend infrastructure utilities (e.g., a StorageClient wrapper and centralized React Query helper(s)) to standardize persistence and query usage across the app.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-existing-canvas-based-snowfall-effect-with-a-hail-effect-render-falling-hailstones-ice-pellets-instead-of-snowflakes-with-a-visually-distinct-hail-look-e-g-small-bright-pellets-and-or-short-streaks-faster-downward-motion-than-snow-and-subtle-horizontal-wind-drift",
+      "title": "Replace the existing canvas-based snowfall effect with a hail effect: render falling hailstones (ice pellets) instead of snowflakes, with a visually distinct hail look (e.g., small bright pellets and/or short streaks), faster downward motion than snow, and subtle horizontal wind drift.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-preserve-existing-performance-and-accessibility-behavior-in-the-background-animation-keep-density-caps-device-pixel-ratio-scaling-resize-handling-and-prefers-reduced-motion-support-reduced-motion-must-not-continuously-animate",
+      "title": "Preserve existing performance and accessibility behavior in the background animation: keep density caps, device-pixel-ratio scaling, resize handling, and prefers-reduced-motion support (reduced motion must not continuously animate).",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-to-use-the-hail-background-component-in-the-main-layout-so-the-hail-effect-renders-behind-the-existing-header-hero-gallery-footer-content-without-affecting-interactions-pointer-events-must-remain-disabled-for-the-canvas",
+      "title": "Update the app to use the hail background component in the main layout so the hail effect renders behind the existing header/hero/gallery/footer content without affecting interactions (pointer-events must remain disabled for the canvas).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Replace the snowfall background animation effect with a hail animation effect.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [
+    "React SPA composition using small presentational components (Header, Hero, Gallery, Footer) orchestrated by App.",
+    "Styling is Tailwind-first with a design-token approach: OKLCH CSS variables defined in global CSS and consumed via Tailwind theme extension (winter.* token namespace).",
+    "Dark mode is configured as class-based (tailwind.config.js darkMode: ['class']) with separate CSS variable sets for :root and .dark.",
+    "Animation is split between CSS utilities (slow spin, custom shadows) and a canvas-driven background effect (SnowfallBackground) driven by requestAnimationFrame.",
+    "State management uses React hooks locally (useState in Gallery) and TanStack React Query for asynchronous resources/caching (actor creation).",
+    "Auth is implemented as a React context provider (InternetIdentityProvider) wrapping the app; identity persistence is handled by DFINITY AuthClient with delegation validation.",
+    "ICP integration pattern: a `useActor` hook creates either an anonymous actor or an authenticated actor based on identity, and invalidates/refetches dependent queries when the actor changes.",
+    "Frontend appears intended for Vite-style module loading (index.html loads /src/main.tsx; TSX entrypoint renders to #root).",
+    "Repository now includes a reusable build-template (workspace) that packages ICP deployment/configuration files, frontend scaffolding, and scripts to standardize builds across environments.",
+    "Build-template frontend includes a bundled shadcn/ui component library (including dialog) intended to be consumed/ported into the main frontend as needed."
+  ],
+  "known_issues": [
+    "There are two global CSS files shown (`frontend/src/index.css` and `frontend/index.css`) with different token sets; this can cause confusion about which one is actually used (main.tsx imports `./index.css` from src).",
+    "Gallery depends on `@/components/ui/dialog` which is not included in the provided files; build will fail unless this alias and component exist elsewhere in the repo.",
+    "No UI is implemented to toggle dark mode class; dark theme exists but may be unreachable without external toggling logic.",
+    "SnowfallBackground recalculates snowflake count based on viewport area without an explicit cap; on very large screens this may impact performance."
+  ],
+  "isFixRequest": false,
+  "generatedImages": [],
+  "gameProjectType": "none",
+  "projectName": "Crystalline Beauty",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

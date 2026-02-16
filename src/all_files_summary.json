@@ -1,0 +1,21 @@
+{
+  "backend/main.mo": "Empty actor definition with no logic.",
+  "feature_evidence.json": "Feature evidence report listing hail‑effect, performance, and layout integration requirements with associated files and components.",
+  "frontend-file-summaries.txt": "Textual summaries of all frontend components and utilities, including hail and snowfall background descriptions.",
+  "frontend/index.css": "Tailwind base and theme variable definitions for light and dark modes with winter‑themed color tokens.",
+  "frontend/index.html": "HTML root document loading the main React entry point.",
+  "frontend/src/App.tsx": "Main app layout composing header, hero, gallery, footer, and the hail background layer.",
+  "frontend/src/components/Footer.tsx": "Footer with attribution, animated heart icon, and a snowflake‑themed quote.",
+  "frontend/src/components/Gallery.tsx": "Image gallery showing six snowflakes with hover effects and modal dialogs for full‑size viewing.",
+  "frontend/src/components/HailBackground.tsx": "Canvas animation generating fast drifting hailstones with motion‑blur streaks, DPR scaling, resize handling, and reduced‑motion support.",
+  "frontend/src/components/Header.tsx": "Centered title bar with animated snowflake icons and winter‑styled theming.",
+  "frontend/src/components/Hero.tsx": "Hero section presenting poetic text about snowflakes with decorative gradient divider.",
+  "frontend/src/components/SnowfallBackground.tsx": "Empty placeholder file for the old snowfall background.",
+  "frontend/src/hooks/useActor.ts": "React hook creating and caching backend actors based on Internet Identity, refreshing queries when identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Implements a React context and provider for ICP Internet Identity authentication, wrapping AuthClient setup, login/clear actions, and status state.",
+  "frontend/src/hooks/useQueries.ts": "Placeholder module exporting nothing because the app has no backend queries.",
+  "frontend/src/index.css": "Defines Tailwind base layers and extensive OKLCH theme variables for light and dark winter-themed styling.",
+  "frontend/src/main.tsx": "Bootstraps the React app, providing React Query and Internet Identity context before rendering App.",
+  "frontend/tailwind.config.js": "Configures Tailwind with custom OKLCH color tokens, winter theme extensions, plugins, and container settings.",
+  "project_state.json": "Describes the project’s feature set, versions, and winter-themed ICP React build template configuration."
+}
