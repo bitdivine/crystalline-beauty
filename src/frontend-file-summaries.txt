@@ -1,12 +1,13 @@
 {
-  "frontend/src/App.tsx": "Main application component that orchestrates the snowflakes page layout with header, hero, gallery sections, footer, and animated hail background.",
-  "frontend/src/components/Header.tsx": "Header component displaying the site title \"Crystalline Beauty\" with animated snowflake icons on either side.",
-  "frontend/src/components/Hero.tsx": "Hero section featuring poetic descriptions celebrating the art and symmetry of snowflakes with elegant typography.",
-  "frontend/src/components/Gallery.tsx": "Gallery component displaying six snowflake images in a responsive grid with hover effects and modal dialogs for detailed viewing.",
-  "frontend/src/components/SnowfallBackground.tsx": "Canvas-based animated snowfall background component that renders stylized 6-armed snowflakes with rotation, twinkle effects, devicePixelRatio support for crisp rendering, capped particle count for performance, and full prefers-reduced-motion support that significantly reduces or stops animation.",
-  "frontend/src/components/Footer.tsx": "Footer component with copyright notice, caffeine.ai attribution, and a poetic quote about snowflakes.",
-  "frontend/src/index.css": "Global styles with OKLCH color system featuring mauve background (L: 0.92, hue: 310°) for light theme with complementary purple-toned colors, ensuring proper text contrast and custom shadow utilities optimized for the mauve theme.",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with winter-themed color tokens, serif font family, and custom utilities for the snowflakes aesthetic.",
-  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as no backend queries are needed for this static artistic presentation.",
-  "frontend/src/components/HailBackground.tsx": "Canvas-based animated hail background component that renders bright pellets with motion-blur streaks falling at high speed with horizontal drift, featuring devicePixelRatio support for crisp rendering, capped particle count for performance, proper resize handling with transform reset, and full prefers-reduced-motion support that renders a static frame when enabled."
+  "frontend/src/App.tsx": "Main application component that handles authentication flow, profile setup, and renders the dashboard with theme provider and toast notifications.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including user profile management, order creation, and order retrieval with proper cache invalidation.",
+  "frontend/src/components/Header.tsx": "Application header with branding using green theme, user avatar, theme toggle, and logout functionality.",
+  "frontend/src/components/Footer.tsx": "Footer component with attribution and caffeine.ai branding link.",
+  "frontend/src/components/LoginScreen.tsx": "Landing page with Internet Identity login button and feature highlights using green theme colors for all UI elements and backgrounds.",
+  "frontend/src/components/ProfileSetup.tsx": "Profile setup form that prompts new users to enter their name before accessing the application.",
+  "frontend/src/components/Dashboard.tsx": "Main dashboard with tabbed interface for viewing orders and creating new service requests.",
+  "frontend/src/components/CreateOrderForm.tsx": "Form component for creating new service orders with service type selection and details input.",
+  "frontend/src/components/OrdersList.tsx": "Displays user's service orders in card format with service type badges using green theme colors, timestamps, and details.",
+  "frontend/src/components/ThemeToggle.tsx": "Toggle button component for switching between light and dark themes.",
+  "frontend/src/index.css": "Global styles with OKLCH color system featuring a green theme with vivid, eye-catching styling and excellent contrast for both light and dark modes, maintaining accessibility and readability across all interface elements."
 }

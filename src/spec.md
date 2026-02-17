@@ -1,12 +1,40 @@
-# Specification
+# BotSpa Application
 
-## Summary
-**Goal:** Replace the existing canvas snowfall background animation with a hail effect while preserving performance, resize behavior, and reduced-motion accessibility.
+## Overview
+BotSpa is a service ordering application that allows users to create and manage service orders for various types of maintenance and support services.
 
-**Planned changes:**
-- Update the canvas particle renderer to draw falling hailstones (bright pellets and/or short streaks) instead of snowflakes, with faster downward motion and subtle horizontal wind drift.
-- Keep existing animation safeguards: particle density caps, device-pixel-ratio scaling, and correct reinitialization on window resize.
-- Preserve prefers-reduced-motion behavior so the background does not continuously animate when reduced motion is enabled.
-- Swap the main layout to use the hail background component behind existing content, ensuring the canvas remains non-interactive (pointer-events disabled) and does not impact layout/readability.
+## Authentication
+- Users must authenticate using Internet Identity login system
+- All functionality requires user authentication
+- User sessions are maintained throughout the application usage
 
-**User-visible outcome:** The site background shows a faster, wind-drifted hail animation behind the header/hero/gallery/footer, without affecting scrolling/clicks, and it becomes static/low-motion when reduced-motion is enabled.
+## Core Functionality
+
+### Order Creation
+- Users can create new service orders after authentication
+- Each order must specify:
+  - Service type (cleaning, consumable replacement, repair, or other)
+  - Service details (description of what is needed)
+- Orders are automatically associated with the logged-in user
+
+### Order Management
+- Users can view a list of their own orders
+- Each order displays the service type and details
+- Orders are displayed in a simple, readable format
+
+## Data Persistence
+- All orders must be stored persistently in the backend
+- Orders are linked to the user's Internet Identity
+- Users can only access their own orders
+
+## User Interface
+- Simple, clean interface for order creation with form fields for service type and details
+- Clear navigation between order creation and order viewing
+- Responsive design suitable for desktop and mobile devices
+- All content and interface elements in English
+- Global background uses a green color scheme applied consistently across all components and pages
+- Background styling maintains excellent contrast with text and UI elements for optimal readability and accessibility
+- Text and accent colors are adjusted to ensure good visibility and accessible contrast against the green background
+- Green background theme is applied uniformly across all views including login, dashboard, forms, and all other components
+- Design supports both light and dark modes with appropriate color adjustments for each mode
+- Typography and layout remain unchanged, with contrast optimizations for the new green background theme
