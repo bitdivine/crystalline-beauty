@@ -1,56 +1,74 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Replace snowfall canvas animation with hail background",
+  "title": "Crystalline Beauty — Replace hail/snow background with spring rain effect",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Replace the snowfall canvas effect with a hail effect (pellets/streaks) featuring faster fall speed and subtle wind drift.",
+      "id": "REQ-4",
+      "summary": "Create a fixed, full-viewport, non-interactive canvas RainBackground that renders animated raindrops with subtle wind drift.",
       "acceptanceCriteria": [
-        "The background animation shows hailstones (pellets/streaks) rather than six-armed snowflakes.",
-        "Hailstones fall noticeably faster than the prior snowflake animation and include slight horizontal drift."
+        "A new React component exists at frontend/src/components/RainBackground.tsx that draws and animates raindrops on a <canvas> element.",
+        "The rain effect is visually distinct from hail/snow (e.g., elongated drops and/or streaks rather than pellets/flakes).",
+        "The canvas remains non-interactive (pointer-events: none) and is fixed to the viewport (covers the full screen)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/HailBackground.tsx",
+          "path": "frontend/src/components/RainBackground.tsx",
           "operation": "create",
-          "description": "Create a new canvas-based HailBackground component that renders visually distinct hailstones (small bright pellets and/or short streaks), with faster downward velocity than the prior snow effect and subtle horizontal wind drift."
-        },
-        {
-          "path": "frontend/src/components/SnowfallBackground.tsx",
-          "operation": "delete",
-          "description": "Remove the old SnowfallBackground component so the snowfall effect is fully replaced by hail."
+          "description": "Add a new RainBackground React component that renders a full-viewport fixed canvas layer (pointer-events: none) and draws elongated raindrops/streaks with subtle horizontal drift (wind) behind the app content."
         }
       ]
     },
     {
-      "id": "REQ-2",
-      "summary": "Preserve performance and accessibility behavior for the background animation (DPR scaling, resize reinit, density caps, prefers-reduced-motion non-animating).",
+      "id": "REQ-5",
+      "summary": "Match the existing background animation performance and accessibility behaviors in RainBackground (DPR scaling, resize handling, density caps, prefers-reduced-motion with runtime updates).",
       "acceptanceCriteria": [
-        "On resize, the canvas resizes correctly and the hail field reinitializes without distortion.",
-        "When the OS setting prefers-reduced-motion is enabled, the background does not continuously animate (renders a static frame or equivalent low-motion behavior).",
-        "Hail particle count remains capped to prevent excessive load on very large viewports."
+        "RainBackground scales correctly on high-DPR displays (uses DPR-aware canvas sizing and drawing coordinates in CSS pixels).",
+        "On window resize, RainBackground resizes the canvas and recreates the raindrop field without visual glitches.",
+        "Raindrop count is density-based and capped to avoid excessive particles on very large screens.",
+        "When prefers-reduced-motion is enabled, the background does not run a requestAnimationFrame loop; it renders a static frame (or otherwise non-animated presentation).",
+        "When prefers-reduced-motion changes at runtime, the component updates accordingly (starts/stops animation and redraws)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/HailBackground.tsx",
+          "path": "frontend/src/components/RainBackground.tsx",
           "operation": "modify",
-          "description": "Implement the same performance/accessibility safeguards as the prior background: device-pixel-ratio-aware canvas sizing (avoid cumulative scaling by resetting the transform on resize), density-based particle counts with min/max caps, proper resize handling that reinitializes hail without distortion, and prefers-reduced-motion support that renders a static frame (no continuous requestAnimationFrame loop) when enabled."
+          "description": "Implement DPR-aware canvas sizing (draw in CSS pixels), recreate raindrop field on resize, apply density-based particle count with min/max caps, and add prefers-reduced-motion support that renders a static frame (no requestAnimationFrame loop) while also responding to runtime motion preference changes."
         }
       ]
     },
     {
-      "id": "REQ-3",
-      "summary": "Wire the hail background into the main layout behind existing content without affecting interactions (canvas pointer-events disabled).",
+      "id": "REQ-6",
+      "summary": "Replace HailBackground with RainBackground in the main app layout so rain renders behind all existing UI without intercepting interactions.",
       "acceptanceCriteria": [
-        "The hail background is visible behind the page content and does not block clicks/scrolling.",
-        "No other sections (Header/Hero/Gallery/Footer) lose layout or readability due to the background change."
+        "frontend/src/App.tsx no longer imports/uses HailBackground; it imports/uses RainBackground instead.",
+        "All existing foreground UI remains visible and usable (no click/scroll interception from the canvas layer)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Update the main layout to render HailBackground behind the existing Header/Hero/Gallery/Footer content, preserving the current layering (background at lower z-index) and ensuring the canvas keeps pointer-events disabled so it does not block clicks/scrolling."
+          "description": "Swap the background layer from HailBackground to RainBackground, keeping the canvas behind the existing header/hero/gallery/footer content and preserving non-interactive behavior (no click/scroll interception)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Remove or clearly deprecate unused snow/hail background components so no active snow/hail background implementation remains mounted.",
+      "acceptanceCriteria": [
+        "No snow/hail background component is mounted in the app after the change.",
+        "If frontend/src/components/SnowfallBackground.tsx remains, it is either removed or left clearly unused (no imports/references in the app)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HailBackground.tsx",
+          "operation": "delete",
+          "description": "Remove the hail background component implementation to ensure the codebase no longer includes an active snow/hail background implementation after RainBackground is wired in."
+        },
+        {
+          "path": "frontend/src/components/SnowfallBackground.tsx",
+          "operation": "delete",
+          "description": "Remove the unused placeholder SnowfallBackground file so there are no lingering snow background components in the codebase."
         }
       ]
     }

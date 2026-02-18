@@ -1,73 +1,104 @@
 {
   "kind": "build_request",
-  "title": "Replace snowfall canvas animation with hail",
+  "title": "Replace hail/snow background with rain effect (spring)",
+  "projectName": "Crystalline Beauty",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Replace the existing canvas-based snowfall effect with a hail effect: render falling hailstones (ice pellets) instead of snowflakes, with a visually distinct hail look (e.g., small bright pellets and/or short streaks), faster downward motion than snow, and subtle horizontal wind drift.",
+      "id": "REQ-4",
+      "text": "Implement a new canvas-based RainBackground component that renders a rain effect (falling raindrops with subtle wind drift) as a fixed full-viewport background layer.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "Hmm.  Can you do hail instead?"
+          "Spring is here.  Replace hail/snow with rain"
         ]
       },
       "acceptanceCriteria": [
-        "The background animation shows hailstones (pellets/streaks) rather than six-armed snowflakes.",
-        "Hailstones fall noticeably faster than the prior snowflake animation and include slight horizontal drift."
+        "A new React component exists at frontend/src/components/RainBackground.tsx that draws and animates raindrops on a <canvas> element.",
+        "The rain effect is visually distinct from hail/snow (e.g., elongated drops and/or streaks rather than pellets/flakes).",
+        "The canvas remains non-interactive (pointer-events: none) and is fixed to the viewport (covers the full screen)."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Preserve existing performance and accessibility behavior in the background animation: keep density caps, device-pixel-ratio scaling, resize handling, and prefers-reduced-motion support (reduced motion must not continuously animate).",
+      "id": "REQ-5",
+      "text": "Preserve the existing background animation performance and accessibility behaviors in the new rain effect: device-pixel-ratio scaling, resize handling, density caps, and prefers-reduced-motion support (reduced motion must not continuously animate).",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "Can you do hail instead?"
+          "Replace hail/snow with rain"
         ]
       },
       "acceptanceCriteria": [
-        "On resize, the canvas resizes correctly and the hail field reinitializes without distortion.",
-        "When the OS setting prefers-reduced-motion is enabled, the background does not continuously animate (renders a static frame or equivalent low-motion behavior).",
-        "Hail particle count remains capped to prevent excessive load on very large viewports."
+        "RainBackground scales correctly on high-DPR displays (uses DPR-aware canvas sizing and drawing coordinates in CSS pixels).",
+        "On window resize, RainBackground resizes the canvas and recreates the raindrop field without visual glitches.",
+        "Raindrop count is density-based and capped to avoid excessive particles on very large screens.",
+        "When prefers-reduced-motion is enabled, the background does not run a requestAnimationFrame loop; it renders a static frame (or otherwise non-animated presentation).",
+        "When prefers-reduced-motion changes at runtime, the component updates accordingly (starts/stops animation and redraws)."
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Update the app to use the hail background component in the main layout so the hail effect renders behind the existing header/hero/gallery/footer content without affecting interactions (pointer-events must remain disabled for the canvas).",
+      "id": "REQ-6",
+      "text": "Replace the current HailBackground usage in the main app layout with the new RainBackground so rain renders behind the existing header/hero/gallery/footer content.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "Can you do hail instead?"
+          "Replace hail/snow with rain"
         ]
       },
       "acceptanceCriteria": [
-        "The hail background is visible behind the page content and does not block clicks/scrolling.",
-        "No other sections (Header/Hero/Gallery/Footer) lose layout or readability due to the background change."
+        "frontend/src/App.tsx no longer imports/uses HailBackground; it imports/uses RainBackground instead.",
+        "All existing foreground UI remains visible and usable (no click/scroll interception from the canvas layer)."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Remove or deprecate unused background components related to snow/hail so the codebase no longer includes an active snow/hail background implementation.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "Replace hail/snow with rain"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No snow/hail background component is mounted in the app after the change.",
+        "If frontend/src/components/SnowfallBackground.tsx remains, it is either removed or left clearly unused (no imports/references in the app)."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui (compose them only).",
-    "Do not modify any files listed in SYSTEM_CONTEXT.frontend.immutablePaths.",
-    "Keep the backend as-is; do not introduce new backend methods or state for this change."
+    "Do not edit files under frontend/src/components/ui (shadcn/ui) since they are read-only sources to be composed, not modified.",
+    "Respect the existing single-page layout structure and keep the background canvas as a non-interactive fixed layer behind content."
   ],
   "nonGoals": [
-    "Adding new authentication flows or identity features.",
-    "Changing the gallery content, modal behavior, or site copy outside of what is necessary to swap the background effect.",
-    "Implementing real-time or network-synced weather effects."
+    "Do not rewrite the site copy (Header/Hero/Gallery/Footer text) unless required to complete the rain background replacement.",
+    "Do not add new backend functionality; backend/main.mo should remain unchanged."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Use English for any user-facing text in build requests."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

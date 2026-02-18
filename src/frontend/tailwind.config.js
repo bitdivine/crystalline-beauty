@@ -65,6 +65,18 @@ export default {
                     'accent-foreground': 'oklch(var(--sidebar-accent-foreground))',
                     border: 'oklch(var(--sidebar-border))',
                     ring: 'oklch(var(--sidebar-ring))'
+                },
+                winter: {
+                    glass: 'oklch(var(--winter-glass))',
+                    border: 'oklch(var(--winter-border))',
+                    accent: 'oklch(var(--winter-accent))',
+                    'accent-bright': 'oklch(var(--winter-accent-bright))',
+                    muted: 'oklch(var(--winter-muted))',
+                    overlay: 'oklch(var(--winter-overlay))',
+                    section: 'oklch(var(--winter-section))',
+                    card: 'oklch(var(--winter-card))',
+                    dialog: 'oklch(var(--winter-dialog))',
+                    foreground: 'oklch(var(--foreground))'
                 }
             },
             borderRadius: {
@@ -74,6 +86,9 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)'
+            },
+            fontFamily: {
+                serif: ['Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif']
             },
             keyframes: {
                 'accordion-down': {

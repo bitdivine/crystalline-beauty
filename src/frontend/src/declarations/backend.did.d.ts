@@ -10,36 +10,7 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
-export interface Order {
-  'id' : bigint,
-  'serviceType' : ServiceType,
-  'owner' : Principal,
-  'timestamp' : Time,
-  'details' : string,
-}
-export type ServiceType = { 'repair' : null } |
-  { 'cleaning' : null } |
-  { 'other' : string } |
-  { 'consumableReplacement' : null };
-export type Time = bigint;
-export interface UserProfile { 'name' : string }
-export type UserRole = { 'admin' : null } |
-  { 'user' : null } |
-  { 'guest' : null };
-export interface _SERVICE {
-  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
-  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
-  'createOrder' : ActorMethod<[ServiceType, string], bigint>,
-  'getAllOrders' : ActorMethod<[], Array<Order>>,
-  'getAvailableServiceTypes' : ActorMethod<[], Array<ServiceType>>,
-  'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
-  'getCallerUserRole' : ActorMethod<[], UserRole>,
-  'getMyOrders' : ActorMethod<[], Array<Order>>,
-  'getOrder' : ActorMethod<[bigint], [] | [Order]>,
-  'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
-  'isCallerAdmin' : ActorMethod<[], boolean>,
-  'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
-}
+export interface _SERVICE {}
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];
 export declare const idlFactory: IDL.InterfaceFactory;

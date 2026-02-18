@@ -4,76 +4,101 @@
 
 @layer base {
     :root {
-        --radius: 0.625rem;
-        /* Green theme - light mode */
-        --background: 0.70 0.25 145;
-        --foreground: 0.15 0.02 145;
-        --card: 0.75 0.22 145;
-        --card-foreground: 0.15 0.02 145;
-        --popover: 0.75 0.22 145;
-        --popover-foreground: 0.15 0.02 145;
-        --primary: 0.25 0.08 145;
-        --primary-foreground: 0.98 0.05 145;
-        --secondary: 0.80 0.18 145;
-        --secondary-foreground: 0.15 0.02 145;
-        --muted: 0.78 0.20 145;
-        --muted-foreground: 0.35 0.05 145;
-        --accent: 0.82 0.16 145;
-        --accent-foreground: 0.15 0.02 145;
-        --destructive: 0.50 0.25 25;
-        --destructive-foreground: 0.98 0.05 25;
-        --border: 0.60 0.20 145;
-        --input: 0.60 0.20 145;
-        --ring: 0.25 0.08 145;
-        --chart-1: 0.646 0.222 161.116;
+        --radius: 0.75rem;
+        
+        /* Light theme with mauve background */
+        --background: 0.92 0.08 310;
+        --foreground: 0.25 0.04 310;
+        --card: 0.95 0.06 310;
+        --card-foreground: 0.25 0.04 310;
+        --popover: 0.96 0.05 310;
+        --popover-foreground: 0.25 0.04 310;
+        --primary: 0.55 0.18 305;
+        --primary-foreground: 0.98 0.01 310;
+        --secondary: 0.85 0.07 310;
+        --secondary-foreground: 0.25 0.04 310;
+        --muted: 0.88 0.06 310;
+        --muted-foreground: 0.40 0.06 310;
+        --accent: 0.65 0.20 300;
+        --accent-foreground: 0.98 0.01 310;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.80 0.08 310;
+        --input: 0.83 0.07 310;
+        --ring: 0.65 0.20 300;
+        
+        /* Winter-specific colors adapted for mauve */
+        --winter-glass: 0.93 0.07 310 / 0.7;
+        --winter-border: 0.82 0.08 310;
+        --winter-accent: 0.70 0.22 300;
+        --winter-accent-bright: 0.75 0.24 295;
+        --winter-muted: 0.60 0.10 310;
+        --winter-overlay: 0.30 0.12 310 / 0.8;
+        --winter-section: 0.90 0.07 310 / 0.6;
+        --winter-card: 0.94 0.07 310 / 0.85;
+        --winter-dialog: 0.96 0.06 310 / 0.95;
+        
+        --chart-1: 0.646 0.222 41.116;
         --chart-2: 0.6 0.118 184.704;
         --chart-3: 0.398 0.07 227.392;
         --chart-4: 0.828 0.189 84.429;
         --chart-5: 0.769 0.188 70.08;
-        --sidebar: 0.72 0.24 145;
-        --sidebar-foreground: 0.15 0.02 145;
-        --sidebar-primary: 0.25 0.08 145;
-        --sidebar-primary-foreground: 0.98 0.05 145;
-        --sidebar-accent: 0.80 0.18 145;
-        --sidebar-accent-foreground: 0.15 0.02 145;
-        --sidebar-border: 0.60 0.20 145;
-        --sidebar-ring: 0.25 0.08 145;
+        --sidebar: 0.985 0 0;
+        --sidebar-foreground: 0.145 0 0;
+        --sidebar-primary: 0.205 0 0;
+        --sidebar-primary-foreground: 0.985 0 0;
+        --sidebar-accent: 0.97 0 0;
+        --sidebar-accent-foreground: 0.205 0 0;
+        --sidebar-border: 0.922 0 0;
+        --sidebar-ring: 0.708 0 0;
     }
 
     .dark {
-        /* Green theme - dark mode */
-        --background: 0.25 0.12 145;
-        --foreground: 0.95 0.05 145;
-        --card: 0.30 0.14 145;
-        --card-foreground: 0.95 0.05 145;
-        --popover: 0.30 0.14 145;
-        --popover-foreground: 0.95 0.05 145;
-        --primary: 0.70 0.25 145;
-        --primary-foreground: 0.15 0.02 145;
-        --secondary: 0.35 0.15 145;
-        --secondary-foreground: 0.95 0.05 145;
-        --muted: 0.32 0.13 145;
-        --muted-foreground: 0.70 0.10 145;
-        --accent: 0.40 0.16 145;
-        --accent-foreground: 0.95 0.05 145;
-        --destructive: 0.65 0.28 25;
-        --destructive-foreground: 0.98 0.05 25;
-        --border: 0.40 0.15 145;
-        --input: 0.40 0.15 145;
-        --ring: 0.70 0.25 145;
+        /* Winter-inspired dark theme with deep fuchsia background */
+        --background: 0.25 0.14 320;
+        --foreground: 0.95 0.01 325;
+        --card: 0.32 0.16 320;
+        --card-foreground: 0.95 0.01 325;
+        --popover: 0.30 0.15 320;
+        --popover-foreground: 0.95 0.01 325;
+        --primary: 0.78 0.26 315;
+        --primary-foreground: 0.20 0.04 320;
+        --secondary: 0.35 0.16 320;
+        --secondary-foreground: 0.95 0.01 325;
+        --muted: 0.40 0.16 320;
+        --muted-foreground: 0.70 0.06 325;
+        --accent: 0.68 0.24 310;
+        --accent-foreground: 0.95 0.01 325;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.95 0.01 325;
+        --border: 0.42 0.18 320 / 0.6;
+        --input: 0.42 0.18 320 / 0.6;
+        --ring: 0.68 0.24 310;
+        
+        /* Winter-specific dark colors adapted for fuchsia */
+        --winter-glass: 0.30 0.15 320 / 0.7;
+        --winter-border: 0.48 0.20 320;
+        --winter-accent: 0.82 0.28 310;
+        --winter-accent-bright: 0.88 0.30 305;
+        --winter-muted: 0.65 0.10 325;
+        --winter-overlay: 0.18 0.16 320 / 0.9;
+        --winter-section: 0.28 0.15 320 / 0.6;
+        --winter-card: 0.34 0.16 320 / 0.85;
+        --winter-dialog: 0.32 0.15 320 / 0.95;
+        
         --chart-1: 0.488 0.243 264.376;
         --chart-2: 0.696 0.17 162.48;
         --chart-3: 0.769 0.188 70.08;
         --chart-4: 0.627 0.265 303.9;
         --chart-5: 0.645 0.246 16.439;
-        --sidebar: 0.27 0.13 145;
-        --sidebar-foreground: 0.95 0.05 145;
-        --sidebar-primary: 0.70 0.25 145;
-        --sidebar-primary-foreground: 0.15 0.02 145;
-        --sidebar-accent: 0.35 0.15 145;
-        --sidebar-accent-foreground: 0.95 0.05 145;
-        --sidebar-border: 0.40 0.15 145;
-        --sidebar-ring: 0.70 0.25 145;
+        --sidebar: 0.205 0 0;
+        --sidebar-foreground: 0.985 0 0;
+        --sidebar-primary: 0.488 0.243 264.376;
+        --sidebar-primary-foreground: 0.985 0 0;
+        --sidebar-accent: 0.269 0 0;
+        --sidebar-accent-foreground: 0.985 0 0;
+        --sidebar-border: 1 0 0 / 10%;
+        --sidebar-ring: 0.439 0 0;
     }
 
     * {
@@ -82,40 +107,34 @@
     
     body {
         @apply bg-background text-foreground;
-        /* Green background with vivid, eye-catching styling */
-        background: linear-gradient(
-            135deg,
-            oklch(var(--background)) 0%,
-            oklch(calc(var(--background) + 0.03) calc(var(--background) * 1.1) 150) 50%,
-            oklch(var(--background)) 100%
-        );
-        background-attachment: fixed;
-        position: relative;
+        min-height: 100vh;
     }
     
-    /* Subtle overlay for depth with green tones */
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+    .dark body {
         background: linear-gradient(
             to bottom,
-            oklch(0.60 0.20 145 / 0.05) 0%,
-            transparent 30%,
-            transparent 70%,
-            oklch(0.40 0.15 145 / 0.05) 100%
+            oklch(var(--background)),
+            oklch(0.20 0.16 320)
         );
-        pointer-events: none;
-        z-index: 0;
-    }
-    
-    /* Ensure content is above the overlay */
-    #root {
-        position: relative;
-        z-index: 1;
     }
 }
 
+@layer utilities {
+    .animate-spin-slow {
+        animation: spin 20s linear infinite;
+    }
+    
+    .animate-spin-slow-reverse {
+        animation: spin 20s linear infinite reverse;
+    }
+    
+    .shadow-winter {
+        box-shadow: 0 4px 20px oklch(0.55 0.20 300 / 0.20),
+                    0 0 40px oklch(0.65 0.22 295 / 0.12);
+    }
+    
+    .shadow-winter-lg {
+        box-shadow: 0 8px 30px oklch(0.55 0.20 300 / 0.30),
+                    0 0 60px oklch(0.65 0.22 295 / 0.18);
+    }
+}

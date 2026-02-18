@@ -1,7 +1,27 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 23,
+  "projectStateVersion": 27,
   "summary": "Crystalline Beauty now includes expanded core infrastructure and a reusable ICP React build template alongside the existing winter-themed landing page frontend, adding deployment/config scaffolding, a bundled shadcn/ui component library in the template, and supporting scripts/lint rules for building and maintaining the project.",
+  "architectural_notes": [
+    "React SPA composition using small presentational components (Header, Hero, Gallery, Footer) orchestrated by App.",
+    "Styling is Tailwind-first with a design-token approach: OKLCH CSS variables defined in global CSS and consumed via Tailwind theme extension (winter.* token namespace).",
+    "Dark mode is configured as class-based (tailwind.config.js darkMode: ['class']) with separate CSS variable sets for :root and .dark.",
+    "Animation is split between CSS utilities (slow spin, custom shadows) and a canvas-driven background effect (SnowfallBackground) driven by requestAnimationFrame.",
+    "State management uses React hooks locally (useState in Gallery) and TanStack React Query for asynchronous resources/caching (actor creation).",
+    "Auth is implemented as a React context provider (InternetIdentityProvider) wrapping the app; identity persistence is handled by DFINITY AuthClient with delegation validation.",
+    "ICP integration pattern: a `useActor` hook creates either an anonymous actor or an authenticated actor based on identity, and invalidates/refetches dependent queries when the actor changes.",
+    "Frontend appears intended for Vite-style module loading (index.html loads /src/main.tsx; TSX entrypoint renders to #root).",
+    "Repository now includes a reusable build-template (workspace) that packages ICP deployment/configuration files, frontend scaffolding, and scripts to standardize builds across environments.",
+    "Build-template frontend includes a bundled shadcn/ui component library (including dialog) intended to be consumed/ported into the main frontend as needed."
+  ],
+  "known_issues": [
+    "There are two global CSS files shown (`frontend/src/index.css` and `frontend/index.css`) with different token sets; this can cause confusion about which one is actually used (main.tsx imports `./index.css` from src).",
+    "Gallery depends on `@/components/ui/dialog` which is not included in the provided files; build will fail unless this alias and component exist elsewhere in the repo.",
+    "No UI is implemented to toggle dark mode class; dark theme exists but may be unreachable without external toggling logic.",
+    "SnowfallBackground recalculates snowflake count based on viewport area without an explicit cap; on very large screens this may impact performance."
+  ],
+  "isFixRequest": false,
+  "generatedImages": [],
   "existing_features": [
     {
       "id": "IF-1",
@@ -182,26 +202,45 @@
       "version": 1
     },
     {
-      "id": "feature-replace-the-existing-canvas-based-snowfall-effect-with-a-hail-effect-render-falling-hailstones-ice-pellets-instead-of-snowflakes-with-a-visually-distinct-hail-look-e-g-small-bright-pellets-and-or-short-streaks-faster-downward-motion-than-snow-and-subtle-horizontal-wind-drift",
-      "title": "Replace the existing canvas-based snowfall effect with a hail effect: render falling hailstones (ice pellets) instead of snowflakes, with a visually distinct hail look (e.g., small bright pellets and/or short streaks), faster downward motion than snow, and subtle horizontal wind drift.",
+      "id": "IF-17",
+      "title": "Canvas-based animated hail background variant",
+      "synonyms": [
+        "Hail effect",
+        "Alternative background animation"
+      ],
+      "description": "Adds an additional fixed, full-viewport canvas background effect (HailBackground) as a variant/alternative to the snowfall animation, following the same requestAnimationFrame-driven pattern for atmospheric motion behind the page content.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-new-canvas-based-rainbackground-component-that-renders-a-rain-effect-falling-raindrops-with-subtle-wind-drift-as-a-fixed-full-viewport-background-layer",
+      "title": "Implement a new canvas-based RainBackground component that renders a rain effect (falling raindrops with subtle wind drift) as a fixed full-viewport background layer.",
       "reqIds": [
-        "REQ-1"
+        "REQ-4"
       ],
       "version": 1
     },
     {
-      "id": "feature-preserve-existing-performance-and-accessibility-behavior-in-the-background-animation-keep-density-caps-device-pixel-ratio-scaling-resize-handling-and-prefers-reduced-motion-support-reduced-motion-must-not-continuously-animate",
-      "title": "Preserve existing performance and accessibility behavior in the background animation: keep density caps, device-pixel-ratio scaling, resize handling, and prefers-reduced-motion support (reduced motion must not continuously animate).",
+      "id": "feature-preserve-the-existing-background-animation-performance-and-accessibility-behaviors-in-the-new-rain-effect-device-pixel-ratio-scaling-resize-handling-density-caps-and-prefers-reduced-motion-support-reduced-motion-must-not-continuously-animate",
+      "title": "Preserve the existing background animation performance and accessibility behaviors in the new rain effect: device-pixel-ratio scaling, resize handling, density caps, and prefers-reduced-motion support (reduced motion must not continuously animate).",
       "reqIds": [
-        "REQ-2"
+        "REQ-5"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-app-to-use-the-hail-background-component-in-the-main-layout-so-the-hail-effect-renders-behind-the-existing-header-hero-gallery-footer-content-without-affecting-interactions-pointer-events-must-remain-disabled-for-the-canvas",
-      "title": "Update the app to use the hail background component in the main layout so the hail effect renders behind the existing header/hero/gallery/footer content without affecting interactions (pointer-events must remain disabled for the canvas).",
+      "id": "feature-replace-the-current-hailbackground-usage-in-the-main-app-layout-with-the-new-rainbackground-so-rain-renders-behind-the-existing-header-hero-gallery-footer-content",
+      "title": "Replace the current HailBackground usage in the main app layout with the new RainBackground so rain renders behind the existing header/hero/gallery/footer content.",
       "reqIds": [
-        "REQ-3"
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-or-deprecate-unused-background-components-related-to-snow-hail-so-the-codebase-no-longer-includes-an-active-snow-hail-background-implementation",
+      "title": "Remove or deprecate unused background components related to snow/hail so the codebase no longer includes an active snow/hail background implementation.",
+      "reqIds": [
+        "REQ-7"
       ],
       "version": 1
     }
@@ -209,31 +248,11 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Replace the snowfall background animation effect with a hail animation effect.",
+      "summary": "Replace snowfall/hail background effects with a rain background effect (spring theme).",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "architectural_notes": [
-    "React SPA composition using small presentational components (Header, Hero, Gallery, Footer) orchestrated by App.",
-    "Styling is Tailwind-first with a design-token approach: OKLCH CSS variables defined in global CSS and consumed via Tailwind theme extension (winter.* token namespace).",
-    "Dark mode is configured as class-based (tailwind.config.js darkMode: ['class']) with separate CSS variable sets for :root and .dark.",
-    "Animation is split between CSS utilities (slow spin, custom shadows) and a canvas-driven background effect (SnowfallBackground) driven by requestAnimationFrame.",
-    "State management uses React hooks locally (useState in Gallery) and TanStack React Query for asynchronous resources/caching (actor creation).",
-    "Auth is implemented as a React context provider (InternetIdentityProvider) wrapping the app; identity persistence is handled by DFINITY AuthClient with delegation validation.",
-    "ICP integration pattern: a `useActor` hook creates either an anonymous actor or an authenticated actor based on identity, and invalidates/refetches dependent queries when the actor changes.",
-    "Frontend appears intended for Vite-style module loading (index.html loads /src/main.tsx; TSX entrypoint renders to #root).",
-    "Repository now includes a reusable build-template (workspace) that packages ICP deployment/configuration files, frontend scaffolding, and scripts to standardize builds across environments.",
-    "Build-template frontend includes a bundled shadcn/ui component library (including dialog) intended to be consumed/ported into the main frontend as needed."
-  ],
-  "known_issues": [
-    "There are two global CSS files shown (`frontend/src/index.css` and `frontend/index.css`) with different token sets; this can cause confusion about which one is actually used (main.tsx imports `./index.css` from src).",
-    "Gallery depends on `@/components/ui/dialog` which is not included in the provided files; build will fail unless this alias and component exist elsewhere in the repo.",
-    "No UI is implemented to toggle dark mode class; dark theme exists but may be unreachable without external toggling logic.",
-    "SnowfallBackground recalculates snowflake count based on viewport area without an explicit cap; on very large screens this may impact performance."
-  ],
-  "isFixRequest": false,
-  "generatedImages": [],
   "gameProjectType": "none",
   "projectName": "Crystalline Beauty",
   "clarification_mode": "instant",
