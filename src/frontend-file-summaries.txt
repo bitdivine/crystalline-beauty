@@ -1,9 +1,9 @@
 {
-  "frontend/src/App.tsx": "Main application component that orchestrates the snowflakes page layout with header, hero, gallery sections, footer, and animated rain background.",
+  "frontend/src/App.tsx": "Main application component that orchestrates the snowflakes page layout with header, hero, gallery sections, footer, and animated snow background.",
   "frontend/src/components/Header.tsx": "Header component displaying the site title \"Crystalline Beauty\" with animated snowflake icons on either side.",
   "frontend/src/components/Hero.tsx": "Hero section featuring poetic descriptions celebrating the art and symmetry of snowflakes with elegant typography.",
   "frontend/src/components/Gallery.tsx": "Gallery component displaying six snowflake images in a responsive grid with hover effects and modal dialogs for detailed viewing.",
-  "frontend/src/components/SnowfallBackground.tsx": "Canvas-based animated snowfall background component that renders stylized 6-armed snowflakes with rotation, twinkle effects, devicePixelRatio support for crisp rendering, capped particle count for performance, and full prefers-reduced-motion support that significantly reduces or stops animation.",
+  "frontend/src/components/SnowfallBackground.tsx": "Canvas-based animated snowfall background component that renders circular snow particles with soft glow effects, featuring devicePixelRatio support for crisp rendering, capped particle count for performance, and full prefers-reduced-motion support that renders a static frame when enabled.",
   "frontend/src/components/Footer.tsx": "Footer component with copyright notice, caffeine.ai attribution, and a poetic quote about snowflakes.",
   "frontend/src/index.css": "Global styles with OKLCH color system featuring mauve background (L: 0.92, hue: 310°) for light theme with complementary purple-toned colors, ensuring proper text contrast and custom shadow utilities optimized for the mauve theme.",
   "frontend/tailwind.config.js": "Tailwind configuration extended with winter-themed color tokens, serif font family, and custom utilities for the snowflakes aesthetic.",

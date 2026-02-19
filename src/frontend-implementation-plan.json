@@ -1,74 +1,40 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Crystalline Beauty — Replace hail/snow background with spring rain effect",
+  "title": "Switch back to snow effect background",
   "requirements": [
     {
-      "id": "REQ-4",
-      "summary": "Create a fixed, full-viewport, non-interactive canvas RainBackground that renders animated raindrops with subtle wind drift.",
+      "id": "REQ-8",
+      "summary": "Replace RainBackground with SnowfallBackground in App.tsx",
       "acceptanceCriteria": [
-        "A new React component exists at frontend/src/components/RainBackground.tsx that draws and animates raindrops on a <canvas> element.",
-        "The rain effect is visually distinct from hail/snow (e.g., elongated drops and/or streaks rather than pellets/flakes).",
-        "The canvas remains non-interactive (pointer-events: none) and is fixed to the viewport (covers the full screen)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/RainBackground.tsx",
-          "operation": "create",
-          "description": "Add a new RainBackground React component that renders a full-viewport fixed canvas layer (pointer-events: none) and draws elongated raindrops/streaks with subtle horizontal drift (wind) behind the app content."
-        }
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "summary": "Match the existing background animation performance and accessibility behaviors in RainBackground (DPR scaling, resize handling, density caps, prefers-reduced-motion with runtime updates).",
-      "acceptanceCriteria": [
-        "RainBackground scales correctly on high-DPR displays (uses DPR-aware canvas sizing and drawing coordinates in CSS pixels).",
-        "On window resize, RainBackground resizes the canvas and recreates the raindrop field without visual glitches.",
-        "Raindrop count is density-based and capped to avoid excessive particles on very large screens.",
-        "When prefers-reduced-motion is enabled, the background does not run a requestAnimationFrame loop; it renders a static frame (or otherwise non-animated presentation).",
-        "When prefers-reduced-motion changes at runtime, the component updates accordingly (starts/stops animation and redraws)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/RainBackground.tsx",
-          "operation": "modify",
-          "description": "Implement DPR-aware canvas sizing (draw in CSS pixels), recreate raindrop field on resize, apply density-based particle count with min/max caps, and add prefers-reduced-motion support that renders a static frame (no requestAnimationFrame loop) while also responding to runtime motion preference changes."
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Replace HailBackground with RainBackground in the main app layout so rain renders behind all existing UI without intercepting interactions.",
-      "acceptanceCriteria": [
-        "frontend/src/App.tsx no longer imports/uses HailBackground; it imports/uses RainBackground instead.",
-        "All existing foreground UI remains visible and usable (no click/scroll interception from the canvas layer)."
+        "App.tsx imports SnowfallBackground instead of RainBackground",
+        "The SnowfallBackground component is rendered in the background layer (fixed, z-0) while main content remains in z-10",
+        "The rain effect is no longer visible; snow particles animate on the canvas background"
       ],
       "file_operations": [
         {
           "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Swap the background layer from HailBackground to RainBackground, keeping the canvas behind the existing header/hero/gallery/footer content and preserving non-interactive behavior (no click/scroll interception)."
+          "description": "Replace the RainBackground import on line 5 with an import for SnowfallBackground from './components/SnowfallBackground'. Update line 10 to render <SnowfallBackground /> instead of <RainBackground />. Keep all other content (Header, Hero, Gallery, Footer) and the layout structure unchanged. The snow background will render in the fixed z-0 layer behind the z-10 main content."
         }
       ]
     },
     {
-      "id": "REQ-7",
-      "summary": "Remove or clearly deprecate unused snow/hail background components so no active snow/hail background implementation remains mounted.",
+      "id": "REQ-9",
+      "summary": "Implement full SnowfallBackground component with canvas-based animated snow particles",
       "acceptanceCriteria": [
-        "No snow/hail background component is mounted in the app after the change.",
-        "If frontend/src/components/SnowfallBackground.tsx remains, it is either removed or left clearly unused (no imports/references in the app)."
+        "SnowfallBackground.tsx exports a functional React component rendering a fixed full-viewport canvas",
+        "Snow particles are animated using requestAnimationFrame with vertical falling motion and optional subtle horizontal drift",
+        "Canvas scales appropriately for device pixel ratio and responds to window resize events",
+        "Particle count is calculated from viewport area with minimum 40 and maximum 250 particles enforced",
+        "When prefers-reduced-motion is enabled, animation stops and particles render statically",
+        "Snow particles have soft glow appearance consistent with the winter theme"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/HailBackground.tsx",
-          "operation": "delete",
-          "description": "Remove the hail background component implementation to ensure the codebase no longer includes an active snow/hail background implementation after RainBackground is wired in."
-        },
-        {
           "path": "frontend/src/components/SnowfallBackground.tsx",
-          "operation": "delete",
-          "description": "Remove the unused placeholder SnowfallBackground file so there are no lingering snow background components in the codebase."
+          "operation": "create",
+          "description": "Create a canvas-based snowfall background component following the same performance and accessibility patterns as RainBackground.tsx. Implement a Snowflake interface with properties: x, y, radius, speed, drift, opacity. Use useEffect and useRef to manage the canvas and animation lifecycle. Implement resizeCanvas function with device-pixel-ratio scaling (identical to RainBackground pattern). Implement createSnowflakes function calculating particle count from viewport area with density formula (e.g., area / 10000), capping between min 40 and max 250 particles, and reducing to 20 particles when prefers-reduced-motion is active. Implement drawSnowflake function rendering circular snow particles with radial gradient (center bright, edges fading) using winter theme colors (soft whites/blues with OKLCH values similar to the existing theme, e.g., 'oklch(0.98 0.02 300)' for glow center fading to transparent). Implement updateSnowflake function moving particles vertically by speed and horizontally by drift, wrapping particles that exit the viewport. Implement animate function using requestAnimationFrame, clearing and redrawing all particles each frame. Check prefers-reduced-motion preference and listen for changes; when reduced motion is active, skip animation and render a single static frame. Add window resize listener calling resizeCanvas and createSnowflakes. Return a canvas element with className 'fixed inset-0 pointer-events-none z-0' and aria-hidden='true'. Match the overall code structure, naming conventions, and cleanup patterns from RainBackground.tsx to maintain consistency."
         }
       ]
     }

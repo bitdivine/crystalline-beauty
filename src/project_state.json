@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 27,
+  "projectStateVersion": 29,
   "summary": "Crystalline Beauty now includes expanded core infrastructure and a reusable ICP React build template alongside the existing winter-themed landing page frontend, adding deployment/config scaffolding, a bundled shadcn/ui component library in the template, and supporting scripts/lint rules for building and maintaining the project.",
   "architectural_notes": [
     "React SPA composition using small presentational components (Header, Hero, Gallery, Footer) orchestrated by App.",
@@ -243,16 +243,25 @@
         "REQ-7"
       ],
       "version": 1
-    }
-  ],
-  "new_feature_requests": [
+    },
     {
-      "id": "AR-1",
-      "summary": "Replace snowfall/hail background effects with a rain background effect (spring theme).",
-      "reqIds": [],
-      "status": "pending"
+      "id": "feature-replace-the-rainbackground-component-import-and-usage-in-frontend-src-app-tsx-with-snowfallbackground-so-the-snow-effect-renders-behind-the-existing-header-hero-gallery-footer-content",
+      "title": "Replace the RainBackground component import and usage in frontend/src/App.tsx with SnowfallBackground so the snow effect renders behind the existing header/hero/gallery/footer content",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-restore-or-implement-the-full-snowfallbackground-component-in-frontend-src-components-snowfallbackground-tsx-with-canvas-based-animated-snow-particles-following-the-same-performance-and-accessibility-patterns-as-rainbackground-device-pixel-ratio-scaling-resize-handling-particle-density-caps-min-40-max-250-density-calculation-based-on-viewport-area-and-prefers-reduced-motion-support-static-display-when-reduced-motion-is-preferred",
+      "title": "Restore or implement the full SnowfallBackground component in frontend/src/components/SnowfallBackground.tsx with canvas-based animated snow particles following the same performance and accessibility patterns as RainBackground: device-pixel-ratio scaling, resize handling, particle density caps (min 40, max 250, density calculation based on viewport area), and prefers-reduced-motion support (static display when reduced motion is preferred)",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
     }
   ],
+  "new_feature_requests": [],
   "gameProjectType": "none",
   "projectName": "Crystalline Beauty",
   "clarification_mode": "instant",

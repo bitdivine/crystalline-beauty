@@ -1,40 +1,18 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-17T12:44:14.500Z",
+  "generatedAt": "2026-02-19T12:00:12.286Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-4",
-        "summary": "Implement a new canvas-based RainBackground component that renders a rain effect (falling raindrops with subtle wind drift) as a fixed full-viewport background layer.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/RainBackground.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/RainBackground.tsx"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Preserve the existing background animation performance and accessibility behaviors in the new rain effect: device-pixel-ratio scaling, resize handling, density caps, and prefers-reduced-motion support (reduced motion must not continuously animate).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/RainBackground.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/RainBackground.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Replace the current HailBackground usage in the main app layout with the new RainBackground so rain renders behind the existing header/hero/gallery/footer content.",
+        "id": "REQ-8",
+        "summary": "Replace the RainBackground component import and usage in frontend/src/App.tsx with SnowfallBackground so the snow effect renders behind the existing header/hero/gallery/footer content",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/App.tsx"
@@ -44,15 +22,14 @@
         ]
       },
       {
-        "id": "REQ-7",
-        "summary": "Remove or deprecate unused background components related to snow/hail so the codebase no longer includes an active snow/hail background implementation.",
+        "id": "REQ-9",
+        "summary": "Restore or implement the full SnowfallBackground component in frontend/src/components/SnowfallBackground.tsx with canvas-based animated snow particles following the same performance and accessibility patterns as RainBackground: device-pixel-ratio scaling, resize handling, particle density caps (min 40, max 250, density calculation based on viewport area), and prefers-reduced-motion support (static display when reduced motion is preferred)",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/HailBackground.tsx",
           "frontend/src/components/SnowfallBackground.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/HailBackground.tsx"
+          "frontend/src/components/SnowfallBackground.tsx"
         ]
       }
     ]
@@ -64,9 +41,7 @@
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
     "frontend/src/App.tsx",
-    "frontend/src/components/HailBackground.tsx",
-    "frontend/src/components/RainBackground.tsx",
-    "frontend/src/config.ts",
+    "frontend/src/components/SnowfallBackground.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -2,44 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-implement-a-new-canvas-based-rainbackground-component-that-renders-a-rain-effect-falling-raindrops-with-subtle-wind-drift-as-a-fixed-full-viewport-background-layer",
-      "featureTitle": "Implement a new canvas-based RainBackground component that renders a rain effect (falling raindrops with subtle wind drift) as a fixed full-viewport background layer.",
-      "files": [
-        "frontend/src/components/RainBackground.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-preserve-the-existing-background-animation-performance-and-accessibility-behaviors-in-the-new-rain-effect-device-pixel-ratio-scaling-resize-handling-density-caps-and-prefers-reduced-motion-support-reduced-motion-must-not-continuously-animate",
-      "featureTitle": "Preserve the existing background animation performance and accessibility behaviors in the new rain effect: device-pixel-ratio scaling, resize handling, density caps, and prefers-reduced-motion support (reduced motion must not continuously animate).",
-      "files": [
-        "frontend/src/components/RainBackground.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-replace-the-current-hailbackground-usage-in-the-main-app-layout-with-the-new-rainbackground-so-rain-renders-behind-the-existing-header-hero-gallery-footer-content",
-      "featureTitle": "Replace the current HailBackground usage in the main app layout with the new RainBackground so rain renders behind the existing header/hero/gallery/footer content.",
+      "featureId": "feature-replace-the-rainbackground-component-import-and-usage-in-frontend-src-app-tsx-with-snowfallbackground-so-the-snow-effect-renders-behind-the-existing-header-hero-gallery-footer-content",
+      "featureTitle": "Replace the RainBackground component import and usage in frontend/src/App.tsx with SnowfallBackground so the snow effect renders behind the existing header/hero/gallery/footer content",
       "files": [
         "frontend/src/App.tsx"
       ],
@@ -51,15 +15,15 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-6"
+        "REQ-8"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-remove-or-deprecate-unused-background-components-related-to-snow-hail-so-the-codebase-no-longer-includes-an-active-snow-hail-background-implementation",
-      "featureTitle": "Remove or deprecate unused background components related to snow/hail so the codebase no longer includes an active snow/hail background implementation.",
+      "featureId": "feature-restore-or-implement-the-full-snowfallbackground-component-in-frontend-src-components-snowfallbackground-tsx-with-canvas-based-animated-snow-particles-following-the-same-performance-and-accessibility-patterns-as-rainbackground-device-pixel-ratio-scaling-resize-handling-particle-density-caps-min-40-max-250-density-calculation-based-on-viewport-area-and-prefers-reduced-motion-support-static-display-when-reduced-motion-is-preferred",
+      "featureTitle": "Restore or implement the full SnowfallBackground component in frontend/src/components/SnowfallBackground.tsx with canvas-based animated snow particles following the same performance and accessibility patterns as RainBackground: device-pixel-ratio scaling, resize handling, particle density caps (min 40, max 250, density calculation based on viewport area), and prefers-reduced-motion support (static display when reduced motion is preferred)",
       "files": [
-        "frontend/src/components/HailBackground.tsx"
+        "frontend/src/components/SnowfallBackground.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -69,7 +33,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-7"
+        "REQ-9"
       ],
       "confidence": "high"
     }

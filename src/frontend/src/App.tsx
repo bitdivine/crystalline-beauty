@@ -2,12 +2,12 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Gallery } from './components/Gallery';
 import { Footer } from './components/Footer';
-import { RainBackground } from './components/RainBackground';
+import { SnowfallBackground } from './components/SnowfallBackground';
 
 function App() {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <RainBackground />
+      <SnowfallBackground />
       <div className="relative z-10">
         <Header />
         <main>
