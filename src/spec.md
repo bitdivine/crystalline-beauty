@@ -1,9 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Change the snowfall effect color from white/blue to red.
+**Goal:** Change the snowfall effect color from red to blue.
 
 **Planned changes:**
-- Modify the SnowfallBackground component's radial gradient color stops to use red tones instead of white/blue
+- Update the SnowfallBackground component to render snowflakes in blue tones instead of red by modifying the radial gradient color values
 
-**User-visible outcome:** The snowfall animation displays red snowflakes instead of white/blue snowflakes while maintaining the same animation behavior.
+**User-visible outcome:** Users will see snowflakes with a soft blue glow effect instead of the current red glow in the background animation.

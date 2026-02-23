@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-modify-the-snowfallbackground-component-s-drawsnowflake-function-to-render-snowflakes-in-red-tones-instead-of-white-blue-by-changing-the-radial-gradient-color-stops-from-white-rgba-255-255-255-and-light-blue-rgba-240-245-255-to-red-values-e-g-rgba-255-0-0-for-the-center-and-rgba-255-100-100-for-the-outer-glow",
-      "featureTitle": "Modify the SnowfallBackground component's drawSnowflake function to render snowflakes in red tones instead of white/blue by changing the radial gradient color stops from white (rgba(255, 255, 255, ...)) and light blue (rgba(240, 245, 255, ...)) to red values (e.g., rgba(255, 0, 0, ...) for the center and rgba(255, 100, 100, ...) for the outer glow)",
+      "featureId": "feature-modify-the-snowfallbackground-component-s-drawsnowflake-function-in-frontend-src-components-snowfallbackground-tsx-to-render-snowflakes-in-blue-tones-instead-of-red-by-changing-the-radial-gradient-color-stops-from-red-values-rgba-255-0-0-and-rgba-255-100-100-to-blue-values-e-g-rgba-173-216-230-for-light-blue-center-and-rgba-135-206-250-for-sky-blue-outer-glow",
+      "featureTitle": "Modify the SnowfallBackground component's drawSnowflake function in frontend/src/components/SnowfallBackground.tsx to render snowflakes in blue tones instead of red by changing the radial gradient color stops from red values (rgba(255, 0, 0, ...) and rgba(255, 100, 100, ...)) to blue values (e.g., rgba(173, 216, 230, ...) for light blue center and rgba(135, 206, 250, ...) for sky blue outer glow)",
       "files": [
         "frontend/src/components/SnowfallBackground.tsx"
       ],
@@ -15,7 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-11"
+        "REQ-12"
       ],
       "confidence": "high"
     }

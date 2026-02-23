@@ -1,39 +1,40 @@
 {
   "kind": "build_request",
-  "title": "Change snowfall effect color to red",
+  "title": "Change snowfall effect color to blue",
   "projectName": "Crystalline Beauty",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-11",
-      "text": "Modify the SnowfallBackground component's drawSnowflake function to render snowflakes in red tones instead of white/blue by changing the radial gradient color stops from white (rgba(255, 255, 255, ...)) and light blue (rgba(240, 245, 255, ...)) to red values (e.g., rgba(255, 0, 0, ...) for the center and rgba(255, 100, 100, ...) for the outer glow)",
+      "id": "REQ-12",
+      "text": "Modify the SnowfallBackground component's drawSnowflake function in frontend/src/components/SnowfallBackground.tsx to render snowflakes in blue tones instead of red by changing the radial gradient color stops from red values (rgba(255, 0, 0, ...) and rgba(255, 100, 100, ...)) to blue values (e.g., rgba(173, 216, 230, ...) for light blue center and rgba(135, 206, 250, ...) for sky blue outer glow)",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-latest"
         ],
         "quotes": [
-          "make the snow-effect red"
+          "change the snow efefct to blue"
         ]
       },
       "acceptanceCriteria": [
-        "Snowflakes in the SnowfallBackground component render with red gradient colors instead of white/blue",
-        "The radial gradient maintains the same opacity and structure but uses red color values",
-        "The snowfall animation continues to work with the same speed, drift, and particle behavior as before",
-        "Both normal and reduced-motion modes continue to function correctly with red snowflakes"
+        "The drawSnowflake function uses blue rgba values in the radial gradient instead of red",
+        "Snowflakes render with a soft blue glow effect on the canvas",
+        "The color change applies to all gradient color stops (center and outer glow)",
+        "Animation speed, particle behavior, and accessibility features remain unchanged"
       ]
     }
   ],
   "constraints": [
-    "Do not modify the snowfall animation logic, particle density, speed ranges (0.25-1 px/frame), or accessibility features (prefers-reduced-motion support)",
-    "Do not change the SnowfallBackground component's canvas rendering infrastructure, devicePixelRatio handling, or resize behavior",
-    "Only modify the color values in the drawSnowflake function's gradient creation"
+    "Do not modify the animation speed, particle density, or drift behavior of snowflakes",
+    "Preserve all existing performance optimizations (devicePixelRatio scaling, resize handling, density caps)",
+    "Maintain prefers-reduced-motion support and accessibility patterns",
+    "Only modify the gradient color values in the drawSnowflake function"
   ],
   "nonGoals": [
-    "Changing the background component from SnowfallBackground to another animation type",
-    "Modifying the snowfall particle count, size ranges, or drift behavior",
-    "Adding color customization controls or theme integration",
-    "Changing any other visual elements beyond the snowflake color itself"
+    "Changing the background animation type (remain as snowfall, not rain or hail)",
+    "Modifying particle size, speed, or movement patterns",
+    "Adding new particle effects or animation behaviors",
+    "Changing theme colors or other UI elements beyond the snowfall effect"
   ],
   "imageRequirements": {
     "required": [],

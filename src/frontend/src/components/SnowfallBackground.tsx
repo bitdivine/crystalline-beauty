@@ -83,10 +83,10 @@ export function SnowfallBackground() {
         snowflake.radius * 2
       );
       
-      // Soft red glow
-      gradient.addColorStop(0, `rgba(255, 0, 0, ${snowflake.opacity})`);
-      gradient.addColorStop(0.5, `rgba(255, 100, 100, ${snowflake.opacity * 0.6})`);
-      gradient.addColorStop(1, `rgba(255, 100, 100, 0)`);
+      // Soft blue glow
+      gradient.addColorStop(0, `rgba(173, 216, 230, ${snowflake.opacity})`);
+      gradient.addColorStop(0.5, `rgba(135, 206, 250, ${snowflake.opacity * 0.6})`);
+      gradient.addColorStop(1, `rgba(135, 206, 250, 0)`);
       
       ctx.fillStyle = gradient;
       ctx.beginPath();

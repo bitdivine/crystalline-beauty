@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 33,
+  "projectStateVersion": 35,
   "summary": "Crystalline Beauty now includes expanded core infrastructure and a reusable ICP React build template alongside the existing winter-themed landing page frontend, adding deployment/config scaffolding, a bundled shadcn/ui component library in the template, and supporting scripts/lint rules for building and maintaining the project.",
   "architectural_notes": [
     "React SPA composition using small presentational components (Header, Hero, Gallery, Footer) orchestrated by App.",
@@ -275,12 +275,20 @@
         "REQ-11"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-modify-the-snowfallbackground-component-s-drawsnowflake-function-in-frontend-src-components-snowfallbackground-tsx-to-render-snowflakes-in-blue-tones-instead-of-red-by-changing-the-radial-gradient-color-stops-from-red-values-rgba-255-0-0-and-rgba-255-100-100-to-blue-values-e-g-rgba-173-216-230-for-light-blue-center-and-rgba-135-206-250-for-sky-blue-outer-glow",
+      "title": "Modify the SnowfallBackground component's drawSnowflake function in frontend/src/components/SnowfallBackground.tsx to render snowflakes in blue tones instead of red by changing the radial gradient color stops from red values (rgba(255, 0, 0, ...) and rgba(255, 100, 100, ...)) to blue values (e.g., rgba(173, 216, 230, ...) for light blue center and rgba(135, 206, 250, ...) for sky blue outer glow)",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
     {
-      "id": "AR-2",
-      "summary": "Change snowfall effect color to red",
+      "id": "AR-3",
+      "summary": "Change snowfall effect color to blue",
       "reqIds": [],
       "status": "pending"
     }

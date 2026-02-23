@@ -1,22 +1,22 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Change snowfall effect color to red",
+  "title": "Change snowfall effect color to blue",
   "requirements": [
     {
-      "id": "REQ-11",
-      "summary": "Change snowflake gradient colors from white/blue to red tones in the SnowfallBackground component",
+      "id": "REQ-12",
+      "summary": "Change snowflake color from red to blue in the SnowfallBackground component by modifying the radial gradient color stops in the drawSnowflake function",
       "acceptanceCriteria": [
-        "Snowflakes in the SnowfallBackground component render with red gradient colors instead of white/blue",
-        "The radial gradient maintains the same opacity and structure but uses red color values",
-        "The snowfall animation continues to work with the same speed, drift, and particle behavior as before",
-        "Both normal and reduced-motion modes continue to function correctly with red snowflakes"
+        "The drawSnowflake function uses blue rgba values in the radial gradient instead of red",
+        "Snowflakes render with a soft blue glow effect on the canvas",
+        "The color change applies to all gradient color stops (center and outer glow)",
+        "Animation speed, particle behavior, and accessibility features remain unchanged"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/SnowfallBackground.tsx",
           "operation": "modify",
-          "description": "Modify the drawSnowflake function (lines 73-97) to change the radial gradient color stops from white/blue to red. Update line 87 from `rgba(255, 255, 255, ${snowflake.opacity})` to `rgba(255, 0, 0, ${snowflake.opacity})` for the center color. Update line 88 from `rgba(240, 245, 255, ${snowflake.opacity * 0.6})` to `rgba(255, 100, 100, ${snowflake.opacity * 0.6})` for the mid-stop color. Update line 89 from `rgba(240, 245, 255, 0)` to `rgba(255, 100, 100, 0)` for the outer transparent color. Do not modify any other animation logic, particle properties, accessibility features, or canvas rendering infrastructure."
+          "description": "Change the radial gradient color stops in the drawSnowflake function (lines 87-89) from red rgba values to blue rgba values. Replace rgba(255, 0, 0, ...) with rgba(173, 216, 230, ...) for the light blue center glow, and replace rgba(255, 100, 100, ...) with rgba(135, 206, 250, ...) for the sky blue outer glow. Preserve all opacity calculations and gradient structure. Do not modify any other animation parameters, particle behavior, devicePixelRatio handling, or prefers-reduced-motion support."
         }
       ]
     }
