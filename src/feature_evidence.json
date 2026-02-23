@@ -2,26 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-rainbackground-component-import-and-usage-in-frontend-src-app-tsx-with-snowfallbackground-so-the-snow-effect-renders-behind-the-existing-header-hero-gallery-footer-content",
-      "featureTitle": "Replace the RainBackground component import and usage in frontend/src/App.tsx with SnowfallBackground so the snow effect renders behind the existing header/hero/gallery/footer content",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-restore-or-implement-the-full-snowfallbackground-component-in-frontend-src-components-snowfallbackground-tsx-with-canvas-based-animated-snow-particles-following-the-same-performance-and-accessibility-patterns-as-rainbackground-device-pixel-ratio-scaling-resize-handling-particle-density-caps-min-40-max-250-density-calculation-based-on-viewport-area-and-prefers-reduced-motion-support-static-display-when-reduced-motion-is-preferred",
-      "featureTitle": "Restore or implement the full SnowfallBackground component in frontend/src/components/SnowfallBackground.tsx with canvas-based animated snow particles following the same performance and accessibility patterns as RainBackground: device-pixel-ratio scaling, resize handling, particle density caps (min 40, max 250, density calculation based on viewport area), and prefers-reduced-motion support (static display when reduced motion is preferred)",
+      "featureId": "feature-modify-the-snowfallbackground-component-s-drawsnowflake-function-to-render-snowflakes-in-red-tones-instead-of-white-blue-by-changing-the-radial-gradient-color-stops-from-white-rgba-255-255-255-and-light-blue-rgba-240-245-255-to-red-values-e-g-rgba-255-0-0-for-the-center-and-rgba-255-100-100-for-the-outer-glow",
+      "featureTitle": "Modify the SnowfallBackground component's drawSnowflake function to render snowflakes in red tones instead of white/blue by changing the radial gradient color stops from white (rgba(255, 255, 255, ...)) and light blue (rgba(240, 245, 255, ...)) to red values (e.g., rgba(255, 0, 0, ...) for the center and rgba(255, 100, 100, ...) for the outer glow)",
       "files": [
         "frontend/src/components/SnowfallBackground.tsx"
       ],
@@ -33,7 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-9"
+        "REQ-11"
       ],
       "confidence": "high"
     }

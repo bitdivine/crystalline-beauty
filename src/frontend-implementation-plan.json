@@ -1,40 +1,22 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Switch back to snow effect background",
+  "title": "Change snowfall effect color to red",
   "requirements": [
     {
-      "id": "REQ-8",
-      "summary": "Replace RainBackground with SnowfallBackground in App.tsx",
+      "id": "REQ-11",
+      "summary": "Change snowflake gradient colors from white/blue to red tones in the SnowfallBackground component",
       "acceptanceCriteria": [
-        "App.tsx imports SnowfallBackground instead of RainBackground",
-        "The SnowfallBackground component is rendered in the background layer (fixed, z-0) while main content remains in z-10",
-        "The rain effect is no longer visible; snow particles animate on the canvas background"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Replace the RainBackground import on line 5 with an import for SnowfallBackground from './components/SnowfallBackground'. Update line 10 to render <SnowfallBackground /> instead of <RainBackground />. Keep all other content (Header, Hero, Gallery, Footer) and the layout structure unchanged. The snow background will render in the fixed z-0 layer behind the z-10 main content."
-        }
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "summary": "Implement full SnowfallBackground component with canvas-based animated snow particles",
-      "acceptanceCriteria": [
-        "SnowfallBackground.tsx exports a functional React component rendering a fixed full-viewport canvas",
-        "Snow particles are animated using requestAnimationFrame with vertical falling motion and optional subtle horizontal drift",
-        "Canvas scales appropriately for device pixel ratio and responds to window resize events",
-        "Particle count is calculated from viewport area with minimum 40 and maximum 250 particles enforced",
-        "When prefers-reduced-motion is enabled, animation stops and particles render statically",
-        "Snow particles have soft glow appearance consistent with the winter theme"
+        "Snowflakes in the SnowfallBackground component render with red gradient colors instead of white/blue",
+        "The radial gradient maintains the same opacity and structure but uses red color values",
+        "The snowfall animation continues to work with the same speed, drift, and particle behavior as before",
+        "Both normal and reduced-motion modes continue to function correctly with red snowflakes"
       ],
       "file_operations": [
         {
           "path": "frontend/src/components/SnowfallBackground.tsx",
-          "operation": "create",
-          "description": "Create a canvas-based snowfall background component following the same performance and accessibility patterns as RainBackground.tsx. Implement a Snowflake interface with properties: x, y, radius, speed, drift, opacity. Use useEffect and useRef to manage the canvas and animation lifecycle. Implement resizeCanvas function with device-pixel-ratio scaling (identical to RainBackground pattern). Implement createSnowflakes function calculating particle count from viewport area with density formula (e.g., area / 10000), capping between min 40 and max 250 particles, and reducing to 20 particles when prefers-reduced-motion is active. Implement drawSnowflake function rendering circular snow particles with radial gradient (center bright, edges fading) using winter theme colors (soft whites/blues with OKLCH values similar to the existing theme, e.g., 'oklch(0.98 0.02 300)' for glow center fading to transparent). Implement updateSnowflake function moving particles vertically by speed and horizontally by drift, wrapping particles that exit the viewport. Implement animate function using requestAnimationFrame, clearing and redrawing all particles each frame. Check prefers-reduced-motion preference and listen for changes; when reduced motion is active, skip animation and render a single static frame. Add window resize listener calling resizeCanvas and createSnowflakes. Return a canvas element with className 'fixed inset-0 pointer-events-none z-0' and aria-hidden='true'. Match the overall code structure, naming conventions, and cleanup patterns from RainBackground.tsx to maintain consistency."
+          "operation": "modify",
+          "description": "Modify the drawSnowflake function (lines 73-97) to change the radial gradient color stops from white/blue to red. Update line 87 from `rgba(255, 255, 255, ${snowflake.opacity})` to `rgba(255, 0, 0, ${snowflake.opacity})` for the center color. Update line 88 from `rgba(240, 245, 255, ${snowflake.opacity * 0.6})` to `rgba(255, 100, 100, ${snowflake.opacity * 0.6})` for the mid-stop color. Update line 89 from `rgba(240, 245, 255, 0)` to `rgba(255, 100, 100, 0)` for the outer transparent color. Do not modify any other animation logic, particle properties, accessibility features, or canvas rendering infrastructure."
         }
       ]
     }

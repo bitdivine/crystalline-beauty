@@ -1,11 +1,9 @@
 # Specification
 
 ## Summary
-**Goal:** Switch the background animation from rain back to snow effect.
+**Goal:** Change the snowfall effect color from white/blue to red.
 
 **Planned changes:**
-- Replace RainBackground with SnowfallBackground in App.tsx
-- Restore/implement SnowfallBackground component with canvas-based animated snow particles
-- Apply performance optimizations: device-pixel-ratio scaling, resize handling, particle density caps (40-250), and prefers-reduced-motion support
+- Modify the SnowfallBackground component's radial gradient color stops to use red tones instead of white/blue
 
-**User-visible outcome:** Users will see gentle snow particles falling in the background instead of rain, creating a cohesive winter atmosphere for the snowflake gallery.
+**User-visible outcome:** The snowfall animation displays red snowflakes instead of white/blue snowflakes while maintaining the same animation behavior.

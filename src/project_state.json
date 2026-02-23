@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 29,
+  "projectStateVersion": 33,
   "summary": "Crystalline Beauty now includes expanded core infrastructure and a reusable ICP React build template alongside the existing winter-themed landing page frontend, adding deployment/config scaffolding, a bundled shadcn/ui component library in the template, and supporting scripts/lint rules for building and maintaining the project.",
   "architectural_notes": [
     "React SPA composition using small presentational components (Header, Hero, Gallery, Footer) orchestrated by App.",
@@ -259,9 +259,32 @@
         "REQ-9"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-reduce-the-snowfall-animation-speed-in-snowfallbackground-component-by-decreasing-the-speed-property-range-for-snowflakes-from-the-current-range-0-5-2-pixels-per-frame-to-a-slower-range-0-25-1-pixels-per-frame-to-make-the-snowflakes-fall-more-gently",
+      "title": "Reduce the snowfall animation speed in SnowfallBackground component by decreasing the speed property range for snowflakes from the current range (0.5-2 pixels per frame) to a slower range (0.25-1 pixels per frame) to make the snowflakes fall more gently",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-modify-the-snowfallbackground-component-s-drawsnowflake-function-to-render-snowflakes-in-red-tones-instead-of-white-blue-by-changing-the-radial-gradient-color-stops-from-white-rgba-255-255-255-and-light-blue-rgba-240-245-255-to-red-values-e-g-rgba-255-0-0-for-the-center-and-rgba-255-100-100-for-the-outer-glow",
+      "title": "Modify the SnowfallBackground component's drawSnowflake function to render snowflakes in red tones instead of white/blue by changing the radial gradient color stops from white (rgba(255, 255, 255, ...)) and light blue (rgba(240, 245, 255, ...)) to red values (e.g., rgba(255, 0, 0, ...) for the center and rgba(255, 100, 100, ...) for the outer glow)",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [],
+  "new_feature_requests": [
+    {
+      "id": "AR-2",
+      "summary": "Change snowfall effect color to red",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
   "gameProjectType": "none",
   "projectName": "Crystalline Beauty",
   "clarification_mode": "instant",

@@ -1,53 +1,39 @@
 {
   "kind": "build_request",
-  "title": "Switch back to snow effect background",
+  "title": "Change snowfall effect color to red",
   "projectName": "Crystalline Beauty",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-8",
-      "text": "Replace the RainBackground component import and usage in frontend/src/App.tsx with SnowfallBackground so the snow effect renders behind the existing header/hero/gallery/footer content",
+      "id": "REQ-11",
+      "text": "Modify the SnowfallBackground component's drawSnowflake function to render snowflakes in red tones instead of white/blue by changing the radial gradient color stops from white (rgba(255, 255, 255, ...)) and light blue (rgba(240, 245, 255, ...)) to red values (e.g., rgba(255, 0, 0, ...) for the center and rgba(255, 100, 100, ...) for the outer glow)",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-switch-back"
+          "msg-latest"
+        ],
+        "quotes": [
+          "make the snow-effect red"
         ]
       },
       "acceptanceCriteria": [
-        "App.tsx imports SnowfallBackground instead of RainBackground",
-        "The SnowfallBackground component is rendered in the background layer (fixed, z-0) while main content remains in z-10",
-        "The rain effect is no longer visible; snow particles animate on the canvas background"
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Restore or implement the full SnowfallBackground component in frontend/src/components/SnowfallBackground.tsx with canvas-based animated snow particles following the same performance and accessibility patterns as RainBackground: device-pixel-ratio scaling, resize handling, particle density caps (min 40, max 250, density calculation based on viewport area), and prefers-reduced-motion support (static display when reduced motion is preferred)",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-switch-back"
-        ]
-      },
-      "acceptanceCriteria": [
-        "SnowfallBackground.tsx exports a functional React component rendering a fixed full-viewport canvas",
-        "Snow particles are animated using requestAnimationFrame with vertical falling motion and optional subtle horizontal drift",
-        "Canvas scales appropriately for device pixel ratio and responds to window resize events",
-        "Particle count is calculated from viewport area with minimum 40 and maximum 250 particles enforced",
-        "When prefers-reduced-motion is enabled, animation stops and particles render statically",
-        "Snow particles have soft glow appearance consistent with the winter theme"
+        "Snowflakes in the SnowfallBackground component render with red gradient colors instead of white/blue",
+        "The radial gradient maintains the same opacity and structure but uses red color values",
+        "The snowfall animation continues to work with the same speed, drift, and particle behavior as before",
+        "Both normal and reduced-motion modes continue to function correctly with red snowflakes"
       ]
     }
   ],
   "constraints": [
-    "Do not modify the immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
-    "Preserve all existing header, hero, gallery, and footer components without modification",
-    "Maintain the winter OKLCH theme tokens and Tailwind styling already in place"
+    "Do not modify the snowfall animation logic, particle density, speed ranges (0.25-1 px/frame), or accessibility features (prefers-reduced-motion support)",
+    "Do not change the SnowfallBackground component's canvas rendering infrastructure, devicePixelRatio handling, or resize behavior",
+    "Only modify the color values in the drawSnowflake function's gradient creation"
   ],
   "nonGoals": [
-    "Modifying the RainBackground component (it should remain as-is for potential future use)",
-    "Changing the HailBackground placeholder file",
-    "Altering the gallery images or modal dialog functionality",
-    "Updating theme colors or design tokens"
+    "Changing the background component from SnowfallBackground to another animation type",
+    "Modifying the snowfall particle count, size ranges, or drift behavior",
+    "Adding color customization controls or theme integration",
+    "Changing any other visual elements beyond the snowflake color itself"
   ],
   "imageRequirements": {
     "required": [],

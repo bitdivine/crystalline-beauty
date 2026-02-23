@@ -63,7 +63,7 @@ export function SnowfallBackground() {
           x: Math.random() * width,
           y: Math.random() * height,
           radius: Math.random() * 2.5 + 1.5, // 1.5-4px
-          speed: reducedMotion ? 0.2 : Math.random() * 1.5 + 0.5, // Gentle fall: 0.5-2
+          speed: reducedMotion ? 0.1 : Math.random() * 0.75 + 0.25, // Gentle fall: 0.25-1
           drift: reducedMotion ? 0 : Math.random() * 0.6 - 0.3, // Subtle horizontal drift
           opacity: Math.random() * 0.4 + 0.5 // 0.5-0.9
         });
@@ -83,10 +83,10 @@ export function SnowfallBackground() {
         snowflake.radius * 2
       );
       
-      // Soft white/blue glow using OKLCH-inspired colors
-      gradient.addColorStop(0, `rgba(255, 255, 255, ${snowflake.opacity})`);
-      gradient.addColorStop(0.5, `rgba(240, 245, 255, ${snowflake.opacity * 0.6})`);
-      gradient.addColorStop(1, `rgba(240, 245, 255, 0)`);
+      // Soft red glow
+      gradient.addColorStop(0, `rgba(255, 0, 0, ${snowflake.opacity})`);
+      gradient.addColorStop(0.5, `rgba(255, 100, 100, ${snowflake.opacity * 0.6})`);
+      gradient.addColorStop(1, `rgba(255, 100, 100, 0)`);
       
       ctx.fillStyle = gradient;
       ctx.beginPath();
